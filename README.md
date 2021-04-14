@@ -1,32 +1,27 @@
 # React to html-template
 
 Node script to server side render your react component into a html file locally. That can be used for example email building.
-
 Supports [styled-components](https://styled-components.com/) use and turns the styling into inline style.
 
 ## Short example
 
 ```js
-const { ReactToHtml } = require('@g-loot/react-email-generator');
-
+const { ReactToHtml } = require(‘@g-loot/react-email-generator’);
 /*
     Your imports for the components
 */
-
 const TEMPLATES = [
-  { fileName: 'deposit-confirmation', component: depositConfirmation },
-  { fileName: 'withdrawal-confirmation', component: withdrawalConfirmation },
+  { fileName: ‘deposit-confirmation’, component: depositConfirmation },
+  { fileName: ‘withdrawal-confirmation’, component: withdrawalConfirmation },
 ];
-
 const options = {
-  path: 'templates',
+  path: ‘templates’,
   styledComponents: true,
-  emailTemplatePathName: './email.html',
-  emailTemplateContentTag: '%CONTENT%',
-  emailTemplateStyleTag: '%STYLE%',
-  emailStylePathName: './src/inlined.css',
+  emailTemplatePathName: ‘./email.html’,
+  emailTemplateContentTag: ‘%CONTENT%‘,
+  emailTemplateStyleTag: ‘%STYLE%‘,
+  emailStylePathName: ‘./src/inlined.css’,
 };
-
 ReactToHtml(TEMPLATES, options);
 ```
 
@@ -34,28 +29,31 @@ ReactToHtml(TEMPLATES, options);
 
 Install this npm package:
 `npm i @g-loot/react-email-generator
-
 In your code:
 
 ```js
-const { ReactToHtml } = require('@g-loot/react-email-generator');
+const { ReactToHtml } = require(‘@g-loot/react-email-generator’);
 ```
 
 ## Api
 
-### ReactToHtml(component, options)
+### ReactToHtml(TEMPLATES, options)
 
 `*` Features coming soon
-
-|                                  | Type           | default                      | description                                       |
-| ---------------------------------- | -------------- | ---------------------------- | ------------------------------------------------- |
-| options.path                       | Type: `String` | Default: `./`                | Target folder to save the generated files to      |
-| \* options.styledComponents        | Type: `Bool`   | Default: `false`             |                                                   |
-| \* options.emailTemplatePathName   | Type: `String` | Default: `./email.html`      | Provide your own html-template                    |
-| \* options.emailStylePathName      | Type: `String` | Default: `./src/inlined.css` | Provide css files to be embedded in <head></head> |
-| \* options.emailTemplateContentTag | Type: `String` | Default: `%CONTENT%`         | Identifier where to target the generated content. |
-| \* options.emailTemplateStyleTag   | Type: `String` | Default: `%STYLE%`           | Identifier where to target the generated styles.  |
+| templates :[{}] | type | default | required | description |
+| ----------------- | --------- | ------- | -------- | -------------------------------- |
+| fileName | `String` | `“”` | `Yes` | Name of the generate file |
+| component | `String` | `null` | `Yes` | JS bundled React component |
+| \* componentStyle | `unknown` | `null` | `No` | Css file to be generated in head |
+| options | Type | default | required | description |
+| ---------------------------------- | -------- | ----------- | -------- | ------------------------------------------------- |
+| options.path | `String` | `./` | `Yes` | Target folder to save the generated files to |
+| \* options.styledComponents | `Bool` | `false` | `No` | |
+| \* options.emailTemplatePathName | `???` | `???` | | Provide your own html-template |
+| \* options.emailStylePathName | `???` | `???` | | Provide css files to be embedded in <head></head> |
+| \* options.emailTemplateContentTag | `???` | `%CONTENT%` | | Identifier where to target the generated content. |
+| \* options.emailTemplateStyleTag | `???` | `%STYLE%` | | Identifier where to target the generated styles. |
 
 ## Extended example
 
-See payments repository
+Check out payments email repository
