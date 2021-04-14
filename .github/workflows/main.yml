@@ -26,8 +26,6 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@g-loot' # Defaults to the user or organization that owns the workflow file
-      - run: npm i
-      - run: npm run build
       # This gets the current tag (pre-release and real tags)
       - name: Get the version
         id: get_version
