@@ -37,15 +37,15 @@ Install this npm package:
 
 In your code:
 
-```
-const { ReactToHtml } = require("@g-loot/react-email-generator");
+```js
+const { ReactToHtml } = require('@g-loot/react-email-generator');
 ```
 
 ## Api
 
 ### ReactToHtml(component, options)
 
-- Features coming soon
+`*` Features coming soon
 
 | #                                  | Type           | default                      | description                                       |
 | ---------------------------------- | -------------- | ---------------------------- | ------------------------------------------------- |
@@ -55,3 +55,7 @@ const { ReactToHtml } = require("@g-loot/react-email-generator");
 | \* options.emailStylePathName      | Type: `String` | Default: `./src/inlined.css` | Provide css files to be embedded in <head></head> |
 | \* options.emailTemplateContentTag | Type: `String` | Default: `%CONTENT%`         | Identifier where to target the generated content. |
 | \* options.emailTemplateStyleTag   | Type: `String` | Default: `%STYLE%`           | Identifier where to target the generated styles.  |
+
+## Extended example
+
+See payments repository
