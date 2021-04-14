@@ -47,7 +47,7 @@ const { ReactToHtml } = require('@g-loot/react-email-generator');
 
 `*` Features coming soon
 
-| #                                  | Type           | default                      | description                                       |
+|                                  | Type           | default                      | description                                       |
 | ---------------------------------- | -------------- | ---------------------------- | ------------------------------------------------- |
 | options.path                       | Type: `String` | Default: `./`                | Target folder to save the generated files to      |
 | \* options.styledComponents        | Type: `Bool`   | Default: `false`             |                                                   |
