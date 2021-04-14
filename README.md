@@ -45,38 +45,13 @@ const { ReactToHtml } = require("@g-loot/react-email-generator");
 
 ### ReactToHtml(component, options)
 
-#### options.path
+- Features coming soon
 
-Type: `String`
-Default: `./`
-
-Target folder to save the generated files to
-
-### Coming soon
-
-#### options.styledComponents
-
-Type: `Bool`
-Default: `false`
-
-#### options.emailTemplatePathName
-
-Provide your own html-template
-
-#### options.emailStylePathName
-
-Provide css files to be embedded in <head></head>
-
-#### options.emailTemplateContentTag
-
-Type: `String`
-Default: `%CONTENT%`
-
-Identifier where to target the generated content.
-
-#### options.emailTemplateStyleTag
-
-Type: `String`
-Default: `%STYLE%`
-
-Identifier where to target the generated styles.
+| #                                  | Type           | default                      | description                                       |
+| ---------------------------------- | -------------- | ---------------------------- | ------------------------------------------------- |
+| options.path                       | Type: `String` | Default: `./`                | Target folder to save the generated files to      |
+| \* options.styledComponents        | Type: `Bool`   | Default: `false`             |                                                   |
+| \* options.emailTemplatePathName   | Type: `String` | Default: `./email.html`      | Provide your own html-template                    |
+| \* options.emailStylePathName      | Type: `String` | Default: `./src/inlined.css` | Provide css files to be embedded in <head></head> |
+| \* options.emailTemplateContentTag | Type: `String` | Default: `%CONTENT%`         | Identifier where to target the generated content. |
+| \* options.emailTemplateStyleTag   | Type: `String` | Default: `%STYLE%`           | Identifier where to target the generated styles.  |
