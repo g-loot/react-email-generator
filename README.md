@@ -57,4 +57,4 @@ const { ReactToHtml } = require(‘@g-loot/react-email-generator’);
 
 ## Extended example
 
-Check out payments email repository
+Check out [payments email repository](https://github.com/g-loot/payment-emails)
