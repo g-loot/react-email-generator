@@ -6,27 +6,28 @@ Supports [styled-components](https://styled-components.com/) use and turns the s
 
 ## Short example
 
-```
-const { ReactToHtml } = require("@g-loot/react-email-generator");
+```js
+const { ReactToHtml } = require('@g-loot/react-email-generator');
 
 /*
     Your imports for the components
 */
 
 const TEMPLATES = [
-    { fileName: "deposit-confirmation", component: depositConfirmation },
-    { fileName: "withdrawal-confirmation", component: withdrawalConfirmation },
+  { fileName: 'deposit-confirmation', component: depositConfirmation },
+  { fileName: 'withdrawal-confirmation', component: withdrawalConfirmation },
 ];
 
 const options = {
-    path: "templates",
-    emailTemplatePathName: "./email.html",
-    emailTemplateContentTag: "%CONTENT%",
-    emailTemplateStyleTag: "%STYLE%",
-    emailStylePathName: "./src/inlined.css",
+  path: 'templates',
+  styledComponents: true,
+  emailTemplatePathName: './email.html',
+  emailTemplateContentTag: '%CONTENT%',
+  emailTemplateStyleTag: '%STYLE%',
+  emailStylePathName: './src/inlined.css',
 };
 
-ReactToHtml(TEMPLATES, options)
+ReactToHtml(TEMPLATES, options);
 ```
 
 ## Installation
@@ -46,27 +47,36 @@ const { ReactToHtml } = require("@g-loot/react-email-generator");
 
 #### options.path
 
-Type: 'String'
-Default: './'
+Type: `String`
+Default: `./`
 
 Target folder to save the generated files to
 
+## Coming soon
+
+### options.styledComponents
+
+Type: `Bool`
+Default: `false`
+
+#### options.emailTemplatePathName
+
+Provide your own html-template
+
+#### options.emailStylePathName
+
+Provide css files to be embedded in <head></head>
+
 #### options.emailTemplateContentTag
 
-Type: 'String'
-Default: '%CONTENT%'
+Type: `String`
+Default: `%CONTENT%`
 
 Identifier where to target the generated content.
 
 #### options.emailTemplateStyleTag
 
-Type: 'String'
-Default: '%STYLE'
+Type: `String`
+Default: `%STYLE%`
 
 Identifier where to target the generated styles.
-
-#### options.emailStylePathName
-
-Coming soon. Provide css files to be embedded in <head></head>
-
-#### options.emailTemplatePathName
