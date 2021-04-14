@@ -13,10 +13,18 @@ function saveEmail(email, FILE_NAME = 'test', options) {
 /* 
 emails contains emailHTML and fileName
 */
+const defaultOptions = {
+  path: 'templates',
+  emailTemplatePathName: './email.html',
+  emailTemplateContentTag: '%CONTENT%',
+  emailTemplateStyleTag: '%STYLE%',
+  emailStylePathName: './src/inlined.css',
+};
 function ReactToHtml(TEMPLATES = [], options = {}) {
-  return createEmail(TEMPLATES, options).then(emails =>
+  const combinedOptions = { ...defaultOptions, ...options };
+  return createEmail(TEMPLATES, combinedOptions).then(emails =>
     emails.forEach(email => {
-      saveEmail(email.emailHTML, email.fileName, options);
+      saveEmail(email.emailHTML, email.fileName, combinedOptions);
     })
   );
 }
