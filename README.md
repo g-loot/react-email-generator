@@ -45,14 +45,15 @@ const { ReactToHtml } = require(‘@g-loot/react-email-generator’);
 | fileName | `String` | `“”` | `Yes` | Name of the generate file |
 | component | `String` | `null` | `Yes` | JS bundled React component |
 | \* componentStyle | `unknown` | `null` | `No` | Css file to be generated in head |
-| options | Type | default | required | description |
+
+| options                            | Type     | default     | required | description                                       |
 | ---------------------------------- | -------- | ----------- | -------- | ------------------------------------------------- |
-| options.path | `String` | `./` | `Yes` | Target folder to save the generated files to |
-| \* options.styledComponents | `Bool` | `false` | `No` | |
-| \* options.emailTemplatePathName | `???` | `???` | | Provide your own html-template |
-| \* options.emailStylePathName | `???` | `???` | | Provide css files to be embedded in <head></head> |
-| \* options.emailTemplateContentTag | `???` | `%CONTENT%` | | Identifier where to target the generated content. |
-| \* options.emailTemplateStyleTag | `???` | `%STYLE%` | | Identifier where to target the generated styles. |
+| options.path                       | `String` | `./`        | `Yes`    | Target folder to save the generated files to      |
+| \* options.styledComponents        | `Bool`   | `false`     | `No`     |                                                   |
+| \* options.emailTemplatePathName   | `???`    | `???`       |          | Provide your own html-template                    |
+| \* options.emailStylePathName      | `???`    | `???`       |          | Provide css files to be embedded in <head></head> |
+| \* options.emailTemplateContentTag | `???`    | `%CONTENT%` |          | Identifier where to target the generated content. |
+| \* options.emailTemplateStyleTag   | `???`    | `%STYLE%`   |          | Identifier where to target the generated styles.  |
 
 ## Extended example
 
