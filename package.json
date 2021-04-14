@@ -1,8 +1,8 @@
 {
   "name": "@g-loot/react-email-generator",
   "version": "1.0.0",
-  "private": true,
   "main": "./index",
+  "author": "Magnus",
   "devDependencies": {
     "react-scripts": "1.1.4"
   },
