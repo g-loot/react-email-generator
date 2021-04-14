@@ -52,9 +52,9 @@ Default: `./`
 
 Target folder to save the generated files to
 
-## Coming soon
+### Coming soon
 
-### options.styledComponents
+#### options.styledComponents
 
 Type: `Bool`
 Default: `false`
