@@ -32,9 +32,15 @@ function getFile(relativePath) {
  */
 
 async function createEmail(TEMPLATES, options) {
-  const [template] = await Promise.all([
-    getFile(options.emailTemplatePathName),
-  ]);
+  let defaulteTemplate;
+
+  if (!options.emailTemplatePathName.includes('<head>')) {
+    const [template] = await Promise.all([
+      getFile(options.emailTemplatePathName),
+    ]);
+    defaulteTemplate = template;
+  }
+  defaulteTemplate = options.emailTemplatePathName;
 
   const result = TEMPLATES.map(async emailTemplate => {
     const emailElement = React.createElement(emailTemplate.component);
@@ -53,7 +59,7 @@ async function createEmail(TEMPLATES, options) {
       });
     });
 
-    let emailHTML = template;
+    let emailHTML = defaulteTemplate;
 
     emailHTML = emailHTML.replace(options.emailTemplateContentTag, content);
     emailHTML = emailHTML.replace(
