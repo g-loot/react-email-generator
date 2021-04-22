@@ -16,6 +16,7 @@ emails contains emailHTML and fileName
 const defaultOptions = {
   path: 'templates',
   emailTemplatePathName: './email.html',
+  headInsertionString: '',
   headInsertionTag: '%HEAD%',
   emailTemplateContentTag: '%CONTENT%',
   emailTemplateStyleTag: '%STYLE%',
