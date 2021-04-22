@@ -1,11 +1,11 @@
-const fs = require("fs");
-const Path = require("path");
+const fs = require('fs');
+const Path = require('path');
 
-const React = require("react");
-const ReactDOMServer = require("react-dom/server");
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
 
-const { ServerStyleSheet } = require("styled-components");
-var inlineCss = require("inline-css");
+const { ServerStyleSheet } = require('styled-components');
+var inlineCss = require('inline-css');
 
 /**
  *
@@ -17,7 +17,7 @@ function getFile(relativePath) {
   return new Promise((resolve, reject) => {
     const path = Path.join(__dirname, relativePath);
 
-    return fs.readFile(path, { encoding: "utf8" }, (err, file) => {
+    return fs.readFile(path, { encoding: 'utf8' }, (err, file) => {
       if (err) return reject(err);
       return resolve(file);
     });
@@ -36,7 +36,7 @@ async function createEmail(TEMPLATES, options) {
     getFile(options.emailTemplatePathName),
   ]);
 
-  const result = TEMPLATES.map(async (emailTemplate) => {
+  const result = TEMPLATES.map(async emailTemplate => {
     const emailElement = React.createElement(emailTemplate.component);
     const sheet = new ServerStyleSheet();
     const html = ReactDOMServer.renderToString(
@@ -45,9 +45,9 @@ async function createEmail(TEMPLATES, options) {
 
     const styleTags = sheet.getStyleTags();
 
-    const x = { url: "xxx" };
+    const x = { url: 'xxx' };
 
-    const content = await new Promise((resolve) => {
+    const content = await new Promise(resolve => {
       inlineCss(html + styleTags, x).then(function (html) {
         resolve(html);
       });
@@ -56,6 +56,10 @@ async function createEmail(TEMPLATES, options) {
     let emailHTML = template;
 
     emailHTML = emailHTML.replace(options.emailTemplateContentTag, content);
+    emailHTML = emailHTML.replace(
+      options.headInsertionTag,
+      emailTemplate.headInsertionString
+    );
     /* emailHTML = emailHTML.replace(options.emailTemplateStyleTag, style); */
     /* const content = ReactDOMServer.renderToStaticMarkup(emailElement); */
 

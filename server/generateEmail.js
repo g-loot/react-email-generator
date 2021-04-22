@@ -16,9 +16,16 @@ emails contains emailHTML and fileName
 const defaultOptions = {
   path: 'templates',
   emailTemplatePathName: './email.html',
+  headInsertionTag: '%HEAD%',
   emailTemplateContentTag: '%CONTENT%',
   emailTemplateStyleTag: '%STYLE%',
   emailStylePathName: './src/inlined.css',
+};
+
+const defaulteTemplateObject = {
+  fileName: '',
+  component: '',
+  headInsertionString: '',
 };
 function ReactToHtml(TEMPLATES = [], options = {}) {
   const combinedOptions = { ...defaultOptions, ...options };
