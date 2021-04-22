@@ -62,6 +62,11 @@ async function createEmail(TEMPLATES, options) {
     let emailHTML = defaulteTemplate;
 
     emailHTML = emailHTML.replace(options.emailTemplateContentTag, content);
+
+    emailTemplate.headInsertionString = emailTemplate.headInsertionString
+      ? emailTemplate.headInsertionString
+      : '';
+
     emailHTML = emailHTML.replace(
       options.headInsertionTag,
       emailTemplate.headInsertionString
