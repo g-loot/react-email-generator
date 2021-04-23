@@ -50,8 +50,24 @@ async function createEmail(TEMPLATES, options) {
     );
 
     const styleTags = sheet.getStyleTags();
-    console.log('***START***' + styleTags + '***END***');
+
     const x = { url: 'xxx' };
+
+    //Extract mediaqueeries and insert in head
+    let styletag = [];
+
+    const numberOfMediaQueries = styleTags.match(/@media/g).length;
+    for (i = 0; i < numberOfMediaQueries; i++) {
+      let extractedMediaQuery = styleTags.substring(
+        styleTags.lastIndexOf('@'),
+        styleTags.lastIndexOf('}}') + 2
+      );
+      styletag.push(extractedMediaQuery);
+      styleTags = styleTags.replace(extractedMediaQuery, '');
+    }
+    styletag.unshift('<style>');
+    styletag.push('</style>');
+    styletag = styletag.join(' ');
 
     const content = await new Promise(resolve => {
       inlineCss(html + styleTags, x).then(function (html) {
@@ -71,7 +87,7 @@ async function createEmail(TEMPLATES, options) {
       options.headInsertionTag,
       emailTemplate.headInsertionString
     );
-    /* emailHTML = emailHTML.replace(options.emailTemplateStyleTag, style); */
+    emailHTML = emailHTML.replace(options.emailTemplateStyleTag, styletag);
     /* const content = ReactDOMServer.renderToStaticMarkup(emailElement); */
 
     // Replace the template tags with the content
