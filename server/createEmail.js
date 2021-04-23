@@ -50,7 +50,7 @@ async function createEmail(TEMPLATES, options) {
     );
 
     const styleTags = sheet.getStyleTags();
-
+    console.log(styleTags);
     const x = { url: 'xxx' };
 
     const content = await new Promise(resolve => {
