@@ -56,19 +56,22 @@ async function createEmail(TEMPLATES, options) {
     //Extract mediaqueeries and insert in head
     let styletag = [];
 
-    const numberOfMediaQueries = styleTags.match(/@media/g).length;
-    for (i = 0; i < numberOfMediaQueries; i++) {
-      let extractedMediaQuery = styleTags.substring(
-        styleTags.lastIndexOf('@'),
-        styleTags.lastIndexOf('}}') + 2
-      );
-      styleTags = styleTags.replace(extractedMediaQuery, ''); //Remove it from the original string
-      extractedMediaQuery = extractedMediaQuery.replace(';', ' !important;'); // So  this manipulation dosnt interfere with replace target
-      styletag.push(extractedMediaQuery);
+    const mediaQueryFindings = styleTags.match(/@media/g);
+    if (mediaQueryFindings) {
+      const numberOfMediaQueries = mediaQueryFindings.length;
+      for (i = 0; i < numberOfMediaQueries; i++) {
+        let extractedMediaQuery = styleTags.substring(
+          styleTags.lastIndexOf('@'),
+          styleTags.lastIndexOf('}}') + 2
+        );
+        styleTags = styleTags.replace(extractedMediaQuery, ''); //Remove it from the original string
+        extractedMediaQuery = extractedMediaQuery.replace(';', ' !important;'); // So  this manipulation dosnt interfere with replace target
+        styletag.push(extractedMediaQuery);
+      }
+      styletag.unshift('<style>');
+      styletag.push('</style>');
+      styletag = styletag.join(' ');
     }
-    styletag.unshift('<style>');
-    styletag.push('</style>');
-    styletag = styletag.join(' ');
 
     const content = await new Promise(resolve => {
       inlineCss(html + styleTags, x).then(function (html) {
