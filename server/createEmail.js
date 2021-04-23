@@ -50,7 +50,7 @@ async function createEmail(TEMPLATES, options) {
     );
 
     let styleTags = sheet.getStyleTags();
-    console.log(styleTags);
+
     const x = { url: 'xxx' };
 
     //Extract mediaqueeries and insert in head
@@ -62,9 +62,9 @@ async function createEmail(TEMPLATES, options) {
         styleTags.lastIndexOf('@'),
         styleTags.lastIndexOf('}}') + 2
       );
-      extractedMediaQuery = extractedMediaQuery.replace(';', ' !important;');
+      styleTags = styleTags.replace(extractedMediaQuery, ''); //Remove it from the original string
+      extractedMediaQuery = extractedMediaQuery.replace(';', ' !important;'); // So  this manipulation dosnt interfere with replace target
       styletag.push(extractedMediaQuery);
-      styleTags = styleTags.replace(extractedMediaQuery, '');
     }
     styletag.unshift('<style>');
     styletag.push('</style>');
