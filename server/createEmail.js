@@ -62,6 +62,7 @@ async function createEmail(TEMPLATES, options) {
         styleTags.lastIndexOf('@'),
         styleTags.lastIndexOf('}}') + 2
       );
+      extractedMediaQuery = extractedMediaQuery.replace(';', ' !important;');
       styletag.push(extractedMediaQuery);
       styleTags = styleTags.replace(extractedMediaQuery, '');
     }
