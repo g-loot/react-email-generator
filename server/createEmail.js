@@ -64,9 +64,12 @@ async function createEmail(TEMPLATES, options) {
           styleTags.lastIndexOf('@'),
           styleTags.lastIndexOf('}}') + 2
         );
-        styleTags = styleTags.replace(extractedMediaQuery, ''); //Remove it from the original string
-        extractedMediaQuery = extractedMediaQuery.replace(';', ' !important;'); // So  this manipulation dosnt interfere with replace target
-        styletag.push(extractedMediaQuery);
+        styleTags = styleTags.replace(extractedMediaQuery, '');
+        let mediaQueryImportantInjection = extractedMediaQuery.replace(
+          /[;]/,
+          '!important'
+        );
+        styletag.push(mediaQueryImportantInjection);
       }
       styletag.unshift('<style>');
       styletag.push('</style>');
