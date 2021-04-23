@@ -50,7 +50,7 @@ async function createEmail(TEMPLATES, options) {
     );
 
     let styleTags = sheet.getStyleTags();
-
+    console.log(styleTags);
     const x = { url: 'xxx' };
 
     //Extract mediaqueeries and insert in head
