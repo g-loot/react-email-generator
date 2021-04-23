@@ -49,7 +49,7 @@ async function createEmail(TEMPLATES, options) {
       sheet.collectStyles(emailElement)
     );
 
-    const styleTags = sheet.getStyleTags();
+    let styleTags = sheet.getStyleTags();
 
     const x = { url: 'xxx' };
 
