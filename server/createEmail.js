@@ -66,7 +66,7 @@ async function createEmail(TEMPLATES, options) {
         );
         styleTags = styleTags.replace(extractedMediaQuery, '');
         let mediaQueryImportantInjection = extractedMediaQuery.replace(
-          /[;]/,
+          /[;]/g,
           ' !important;'
         );
         styletag.push(mediaQueryImportantInjection);
